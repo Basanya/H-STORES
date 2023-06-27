@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+</head>
+<body>
+    <h1>Completed Orders</h1>
+    You have {{ completed_orders.count }} completed orders
+    {% for order in completed_orders %}
+        <p>Ordered Date: {{ order.order.created }}</p>
+        <p>Email: {{ order.email }}</p>
+        <a href="{% url 'orders:user-order-detail' order.id %}">View</a>
+    {% endfor %}
+
+    <h1>Incomplete Orders</h1>
+    {{ incomplete_orders.count}}
+</body>
+</html>
